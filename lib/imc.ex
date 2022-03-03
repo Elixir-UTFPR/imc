@@ -3,16 +3,19 @@ defmodule Imc do
   Documentation for `Imc`.
   """
 
-  @doc """
-  Hello world.
+  def calcula(peso, altura) do
+    round(peso / (altura * altura) * 10) / 10
+  end
 
-  ## Examples
+  def classifica(peso, altura) do
+    classifica(calcula(peso, altura))
+  end
 
-      iex> Imc.hello()
-      :world
+  defp classifica(imc) when imc < 18.5 do
+    "peso baixo"
+  end
 
-  """
-  def hello do
-    :world
+  defp classifica(imc) when imc <= 24.9 do
+    "peso normal"
   end
 end
